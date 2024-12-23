@@ -93,11 +93,6 @@ if st.button("Cari"):
             end_time = time.time()
         
         st.write(f"⏱️ Pencarian selesai dalam {end_time - start_time:.4f} detik.")
-        st.write("""
-        ### Apa itu Proximitas?
-        **Proximitas** adalah ukuran jarak antara kata kunci pencarian Anda dan hasil yang ditemukan. 
-        Semakin kecil nilainya, semakin sesuai hasil pencarian dengan yang Anda cari.
-        """)
         
         if isinstance(results, str):
             st.error(results)
