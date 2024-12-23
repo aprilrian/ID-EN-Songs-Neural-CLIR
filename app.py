@@ -110,26 +110,27 @@ if st.button("Cari"):
         
                 # Card Layout
                 st.markdown(f"""
-                <div style='padding: 15px; margin: 10px 0; border: 1px solid #555; 
-                border-radius: 10px; background: linear-gradient(135deg, #1E1E1E, #292929); 
-                box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);'>
+                <div style='padding: 20px; margin: 10px 0; border: 1px solid #76C7C0; 
+                border-radius: 10px; background: linear-gradient(135deg, #2C2C2C, #1E1E1E); 
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);'>
                     <h3 style='margin-bottom: 10px; color: #76C7C0; font-family: "Arial Black", sans-serif;'>{i + 1}. {title}</h3>
-                    <p style='font-size: 14px; color: #FFD700; font-family: Arial, sans-serif; margin: 5px 0;'><b>Proximitas:</b> {result['distance']:.4f}</p>
-                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Artis:</b> {result['artist']}</p>
-                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Bahasa:</b> {"Indonesia" if result['artist'] == "id" else "Inggris"}</p>
+                    <div style='margin-bottom: 10px;'>
+                        <p style='font-size: 14px; color: #FFD700; font-family: Arial, sans-serif; margin: 5px 0;'><b>Proximitas:</b> {result['distance']:.4f} <span style='font-size: 12px; color: #76C7C0;'>(Semakin kecil, semakin relevan)</span></p>
+                        <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Artis:</b> {result['artist']}</p>
+                        <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Bahasa:</b> {"Indonesia" if result['lang'] == "id" else "Inggris"}</p>
+                    </div>
                     <p style='font-size: 16px; color: #DDD; font-family: Georgia, serif; margin-top: 10px;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
-        
+
                 # Gunakan expander untuk lirik lengkap
                 with st.expander(f"🎵 Klik untuk melihat lirik lengkap dari '{title}' oleh {result['artist']}"):
                     st.markdown(f"""
-                    <div style='max-height: 200px; overflow-y: auto; padding: 10px; 
-                    background: #333; border-radius: 8px;'>
+                    <div style='max-height: 300px; overflow-y: auto; padding: 15px; 
+                    background: #2C2C2C; border-radius: 8px; border: 1px solid #76C7C0;'>
                         <p style='color: #EEE; font-size: 14px; line-height: 1.6;'>{full_lyric}</p>
                     </div>
                     """, unsafe_allow_html=True)
-
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
