@@ -92,6 +92,7 @@ if st.button("Cari"):
         else:
             for i, result in enumerate(results):
                 title = result['title'].title()  # Kapitalisasi judul
+                short_lyric = result['lyric'][:300].capitalize() + "..."  # Cuplikan lirik
                 full_lyric = result['lyric'].capitalize()  # Lirik lengkap
                 distance = result['distance']
         
@@ -100,13 +101,15 @@ if st.button("Cari"):
                 <div style='padding: 15px; margin: 10px 0; border: 1px solid #444; border-radius: 10px; background-color: #2B2B2B; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);'>
                     <h3 style='margin-bottom: 10px; color: #1E90FF; font-family: Arial, sans-serif;'>{i + 1}. {title}</h3>
                     <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Distance:</b> {distance:.4f}</p>
+                    <p style='font-size: 16px; color: #EEE; font-family: Georgia, serif;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
         
-                # Scrollable text area untuk lirik lengkap
-                st.text_area(f"Lirik Lengkap: {title}", full_lyric, height=200, key=f"text_{i}")
-    else:
-        st.warning("Masukkan kata kunci untuk memulai pencarian!")
+                # Gunakan expander untuk lirik lengkap
+                with st.expander(f"Tampilkan lirik lengkap untuk '{title}'"):
+                    st.write(full_lyric)
+            else:
+                st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
 st.markdown("<hr style='border: 1px solid #555; margin-top: 30px;'>", unsafe_allow_html=True)
 st.markdown("""
