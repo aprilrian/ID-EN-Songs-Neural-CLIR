@@ -6,15 +6,17 @@ import faiss
 from sentence_transformers import SentenceTransformer
 import time
 
-# Load Dataset
-try:
-    dataset = pd.read_csv('preprocessed_dataset.csv')
-    if dataset.empty:
-        st.error("Dataset kosong! Pastikan dataset tersedia.")
-        st.stop()
-except Exception as e:
-    st.error(f"Error saat memuat dataset: {e}")
-    st.stop()
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+
+model = load_model()
+
+@st.cache_data
+def load_dataset():
+    return pd.read_csv('/content/preprocessed_dataset.csv')
+
+dataset = load_dataset()
 
 # Preprocessing Function
 def preprocess(lyric):
@@ -30,13 +32,6 @@ def normalize(embedding):
     norm = np.linalg.norm(embedding)
     return embedding if norm == 0 else embedding / norm
 
-# Load Model
-try:
-    model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
-except Exception as e:
-    st.error(f"Error saat memuat model: {e}")
-    st.stop()
-
 # Load FAISS Index
 try:
     index_multilingual = faiss.read_index("faiss_multilingual.index")
@@ -46,7 +41,7 @@ except Exception as e:
     st.stop()
 
 # Search Function
-def search_lyrics(query, k=5):
+def search_lyrics(query, k=10):
     query = preprocess_query(query)
     if not query.strip():
         return "Kueri kosong. Masukkan kata kunci."
