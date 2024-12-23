@@ -75,8 +75,8 @@ def search_lyrics(query, k=5):
 # Streamlit UI
 st.markdown("""
 <div style='text-align: center; margin-bottom: 30px;'>
-    <h1 style='color: #4CAF50; font-family: Verdana, sans-serif;'>🎵 Pencarian Lirik Lagu 🎵</h1>
-    <p style='color: #888; font-size: 16px;'>Cari lagu favorit Anda berdasarkan lirik atau kata kunci!</p>
+    <h1 style='color: #76C7C0; font-family: Verdana, sans-serif;'>🎵 Pencarian Lirik Lagu 🎵</h1>
+    <p style='color: #BBB; font-size: 16px;'>Cari lagu favorit Anda berdasarkan lirik atau kata kunci!</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -99,18 +99,18 @@ if st.button("Cari"):
                 title = result['title'].title()
                 lyric = result['lyric'].capitalize()
                 st.markdown(f"""
-                <div style='padding: 15px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; background-color: #ffffff; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);'>
+                <div style='padding: 15px; margin: 10px 0; border: 1px solid #444; border-radius: 10px; background-color: #2B2B2B; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);'>
                     <h3 style='margin-bottom: 10px; color: #1E90FF; font-family: Arial, sans-serif;'>{i + 1}. {title}</h3>
-                    <p style='font-size: 14px; color: #666; font-family: Arial, sans-serif;'><b>Distance:</b> {result['distance']:.4f}</p>
-                    <p style='font-size: 16px; color: #333; font-family: Georgia, serif;'>{lyric}...</p>
+                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Distance:</b> {result['distance']:.4f}</p>
+                    <p style='font-size: 16px; color: #EEE; font-family: Georgia, serif;'>{lyric}...</p>
                 </div>
                 """, unsafe_allow_html=True)
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
-st.markdown("<hr style='border: 1px solid #ddd; margin-top: 30px;'>", unsafe_allow_html=True)
+st.markdown("<hr style='border: 1px solid #555; margin-top: 30px;'>", unsafe_allow_html=True)
 st.markdown("""
 <div style='text-align: center;'>
-    <p style='color: #aaa; font-size: 12px;'>Built with ❤️ by TBI MANIACS</p>
+    <p style='color: #777; font-size: 12px;'>Built with ❤️ by TBI MANIACS</p>
 </div>
 """, unsafe_allow_html=True)
