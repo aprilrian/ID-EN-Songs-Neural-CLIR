@@ -97,7 +97,7 @@ if st.button("Cari"):
         else:
             for i, result in enumerate(results):
                 title = result['title'].title()
-                short_lyric = result['preprocessed_lyric'][:300].capitalize() + "..."
+                short_lyric = result['lyric'][:300].capitalize() + "..."
                 full_lyric = result['lyric'].capitalize()
                 distance = result['distance']
         
