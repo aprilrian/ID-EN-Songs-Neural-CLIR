@@ -41,7 +41,7 @@ except Exception as e:
     st.stop()
 
 # Search Function
-def search_lyrics(query, k=10):
+def search_lyrics(query, k=5):
     query = preprocess_query(query)
     if not query.strip():
         return "Kueri kosong. Masukkan kata kunci."
@@ -82,13 +82,12 @@ st.markdown("""
 query = st.text_input("Masukkan lirik atau kata kunci:")
 
 k = st.slider("Jumlah hasil yang ingin ditampilkan:", min_value=1, max_value=10, value=5)
-results = search_lyrics(query, k=k)
 
 if st.button("Cari"):
     if query:
         with st.spinner("Sedang mencari..."):
             start_time = time.time()
-            results = search_lyrics(query)
+            results = search_lyrics(query, k=k)
             end_time = time.time()
         
         st.write(f"⏱️ Pencarian selesai dalam {end_time - start_time:.4f} detik.")
