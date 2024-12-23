@@ -108,8 +108,8 @@ if st.button("Cari"):
                 # Gunakan expander untuk lirik lengkap
                 with st.expander(f"Tampilkan lirik lengkap untuk '{title}'"):
                     st.write(full_lyric)
-            else:
-                st.warning("Masukkan kata kunci untuk memulai pencarian!")
+    else:
+        st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
 st.markdown("<hr style='border: 1px solid #555; margin-top: 30px;'>", unsafe_allow_html=True)
 st.markdown("""
