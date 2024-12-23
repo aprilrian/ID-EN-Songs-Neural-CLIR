@@ -66,7 +66,7 @@ def search_lyrics(query, k=5):
         lyric = dataset.iloc[idx]['preprocessed_lyric']
         lang = dataset.iloc[idx]['lang']
         distance = distances[0][i]
-        results.append({"title": title, "artist": artist, "lyric": lyric, "distance": distance}, "lang": lang)
+        results.append({"title": title, "artist": artist, "lyric": lyric, "distance": distance, "lang": lang})
     return results
 
 # Streamlit UI
