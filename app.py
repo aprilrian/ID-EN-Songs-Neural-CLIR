@@ -78,6 +78,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+def show_dataset_summary(dataset):
+    st.markdown("### Statistik Dataset")
+    st.write(dataset.describe(include='all'))
+    st.write(f"Jumlah lagu: {len(dataset)}")
+    st.write(f"Bahasa: {dataset['lang'].unique()}")
+
+show_dataset_summary(dataset)
+
 # Query Input
 query = st.text_input("Masukkan lirik atau kata kunci:")
 
