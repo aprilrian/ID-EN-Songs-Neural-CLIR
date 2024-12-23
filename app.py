@@ -92,7 +92,11 @@ if st.button("Cari"):
             results = search_lyrics(query, k=k)
             end_time = time.time()
         
-        st.write(f"⏱️ Pencarian selesai dalam {end_time - start_time:.4f} detik.")
+        st.markdown(f"""
+        <div style='text-align: right; font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin-top: 10px;'>
+            ⏱️ Pencarian selesai dalam {end_time - start_time:.4f} detik.
+        </div>
+        """, unsafe_allow_html=True)
         
         if isinstance(results, str):
             st.error(results)
