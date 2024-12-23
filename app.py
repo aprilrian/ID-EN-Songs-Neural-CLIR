@@ -81,6 +81,9 @@ st.markdown("""
 # Query Input
 query = st.text_input("Masukkan lirik atau kata kunci:")
 
+k = st.slider("Jumlah hasil yang ingin ditampilkan:", min_value=1, max_value=10, value=5)
+results = search_lyrics(query, k=k)
+
 if st.button("Cari"):
     if query:
         with st.spinner("Sedang mencari..."):
