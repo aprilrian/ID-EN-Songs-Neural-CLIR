@@ -73,8 +73,12 @@ def search_lyrics(query, k=5):
     return results
 
 # Streamlit UI
-st.markdown("<h1 style='text-align: center; color: cyan;'>🎵 Pencarian Lirik Lagu 🎵</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: lightgray;'>Cari lagu favorit Anda berdasarkan lirik atau kata kunci!</p>", unsafe_allow_html=True)
+st.markdown("""
+<div style='text-align: center; margin-bottom: 30px;'>
+    <h1 style='color: #4CAF50; font-family: Verdana, sans-serif;'>🎵 Pencarian Lirik Lagu 🎵</h1>
+    <p style='color: #888; font-size: 16px;'>Cari lagu favorit Anda berdasarkan lirik atau kata kunci!</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Query Input
 query = st.text_input("Masukkan lirik atau kata kunci:")
@@ -92,16 +96,21 @@ if st.button("Cari"):
             st.error(results)
         else:
             for i, result in enumerate(results):
+                title = result['title'].title()
+                lyric = result['lyric'].capitalize()
                 st.markdown(f"""
-                <div style='padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;'>
-                    <h3 style='margin-bottom: 5px; color: #333;'>{i + 1}. {result['title']}</h3>
-                    <p style='font-size: 14px; color: #555;'><b>Distance:</b> {result['distance']:.4f}</p>
-                    <p style='font-size: 16px; color: #222;'>{result['lyric']}...</p>
+                <div style='padding: 15px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; background-color: #ffffff; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);'>
+                    <h3 style='margin-bottom: 10px; color: #1E90FF; font-family: Arial, sans-serif;'>{i + 1}. {title}</h3>
+                    <p style='font-size: 14px; color: #666; font-family: Arial, sans-serif;'><b>Distance:</b> {result['distance']:.4f}</p>
+                    <p style='font-size: 16px; color: #333; font-family: Georgia, serif;'>{lyric}...</p>
                 </div>
                 """, unsafe_allow_html=True)
-
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
-st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>Built with ❤️ By TBI MANIACS</p>", unsafe_allow_html=True)
+st.markdown("<hr style='border: 1px solid #ddd; margin-top: 30px;'>", unsafe_allow_html=True)
+st.markdown("""
+<div style='text-align: center;'>
+    <p style='color: #aaa; font-size: 12px;'>Built with ❤️ by TBI MANIACS</p>
+</div>
+""", unsafe_allow_html=True)
