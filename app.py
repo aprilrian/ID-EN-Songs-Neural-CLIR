@@ -67,7 +67,7 @@ def search_lyrics(query, k=5):
     for i in range(len(indices[0])):
         idx = indices[0][i]
         title = dataset.iloc[idx]['title']
-        lyric = dataset.iloc[idx]['lyric'][:300]  # Limit lyric preview
+        lyric = dataset.iloc[idx]['preprocessed_lyric'] 
         distance = distances[0][i]
         results.append({"title": title, "lyric": lyric, "distance": distance})
     return results
@@ -97,14 +97,23 @@ if st.button("Cari"):
         else:
             for i, result in enumerate(results):
                 title = result['title'].title()
-                lyric = result['lyric'].capitalize()
+                short_lyric = result['preprocessed_lyric'][:300].capitalize() + "..."
+                full_lyric = result['lyric'].capitalize()
+                distance = result['distance']
+        
+                # Card Layout
                 st.markdown(f"""
                 <div style='padding: 15px; margin: 10px 0; border: 1px solid #444; border-radius: 10px; background-color: #2B2B2B; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);'>
                     <h3 style='margin-bottom: 10px; color: #1E90FF; font-family: Arial, sans-serif;'>{i + 1}. {title}</h3>
-                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Distance:</b> {result['distance']:.4f}</p>
-                    <p style='font-size: 16px; color: #EEE; font-family: Georgia, serif;'>{lyric}...</p>
+                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Distance:</b> {distance:.4f}</p>
+                    <p style='font-size: 16px; color: #EEE; font-family: Georgia, serif;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
+        
+                # Tombol untuk melihat lirik lengkap
+                if st.button(f"Tampilkan lirik lengkap untuk '{title}'", key=f"show_{i}"):
+                    st.write(full_lyric)
+
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
