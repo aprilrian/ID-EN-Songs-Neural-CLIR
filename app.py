@@ -70,8 +70,11 @@ def search_lyrics(query, k=10):
 # Streamlit UI
 st.markdown("""
 <div style='text-align: center; margin-bottom: 30px;'>
-    <h1 style='color: #76C7C0; font-family: Verdana, sans-serif;'>🎵 Pencarian Lirik Lagu 🎵</h1>
-    <p style='color: #BBB; font-size: 16px;'>Cari lagu favorit Anda berdasarkan lirik atau kata kunci!</p>
+    <h1 style='color: #FFFFFF; font-family: "Trebuchet MS", sans-serif; 
+    background: linear-gradient(90deg, rgba(118,199,192,1) 0%, rgba(30,144,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;'>🎵 Indonesia-English Song Lyrics CLIR 🎵</h1>
+    <p style='color: #AAA; font-size: 16px;'>Cari lagu favorit Anda berdasarkan cuplikan lirik atau kata kunci!</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -98,22 +101,30 @@ if st.button("Cari"):
         
                 # Card Layout
                 st.markdown(f"""
-                <div style='padding: 15px; margin: 10px 0; border: 1px solid #444; border-radius: 10px; background-color: #2B2B2B; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);'>
-                    <h3 style='margin-bottom: 10px; color: #1E90FF; font-family: Arial, sans-serif;'>{i + 1}. {title}</h3>
-                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Distance:</b> {distance:.4f}</p>
-                    <p style='font-size: 16px; color: #EEE; font-family: Georgia, serif;'>{short_lyric}</p>
+                <div style='padding: 15px; margin: 10px 0; border: 1px solid #555; 
+                border-radius: 10px; background: linear-gradient(135deg, #1E1E1E, #292929); 
+                box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);'>
+                    <h3 style='margin-bottom: 10px; color: #76C7C0; font-family: "Arial Black", sans-serif;'>{i + 1}. {title}</h3>
+                    <p style='font-size: 14px; color: #BBB; font-family: Arial, sans-serif;'><b>Jarak (Distance):</b> {distance:.4f}</p>
+                    <p style='font-size: 16px; color: #DDD; font-family: Georgia, serif;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
         
                 # Gunakan expander untuk lirik lengkap
-                with st.expander(f"Tampilkan lirik lengkap untuk '{title}'"):
-                    st.write(full_lyric)
+                with st.expander(f"🎵 Klik untuk melihat lirik lengkap dari '{title}'"):
+                    st.markdown(f"""
+                    <div style='max-height: 200px; overflow-y: auto; padding: 10px; 
+                    background: #333; border-radius: 8px;'>
+                        <p style='color: #EEE; font-size: 14px; line-height: 1.6;'>{full_lyric}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
 st.markdown("<hr style='border: 1px solid #555; margin-top: 30px;'>", unsafe_allow_html=True)
 st.markdown("""
-<div style='text-align: center;'>
-    <p style='color: #777; font-size: 12px;'>Built with ❤️ by TBI MANIACS</p>
+<div style='text-align: center; margin-top: 50px;'>
+    <p style='color: #555; font-size: 14px;'>Built with ❤️ by <b>TBI MANIACS</b>.</p>
+    <a href="https://github.com/aprilrian/ID-EN-Songs-Neural-CLIR" style='color: #76C7C0; text-decoration: none;'>GitHub Repo</a> | 
 </div>
 """, unsafe_allow_html=True)
