@@ -62,9 +62,10 @@ def search_lyrics(query, k=5):
     for i in range(len(indices[0])):
         idx = indices[0][i]
         title = dataset.iloc[idx]['title']
+        artist = dataset.iloc[idx]['artist']
         lyric = dataset.iloc[idx]['preprocessed_lyric'] 
         distance = distances[0][i]
-        results.append({"title": title, "lyric": lyric, "distance": distance})
+        results.append({"title": title, "artist": artist, "lyric": lyric, "distance": distance})
     return results
 
 # Streamlit UI
@@ -107,19 +108,21 @@ if st.button("Cari"):
                 border-radius: 10px; background: linear-gradient(135deg, #1E1E1E, #292929); 
                 box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);'>
                     <h3 style='margin-bottom: 10px; color: #76C7C0; font-family: "Arial Black", sans-serif;'>{i + 1}. {title}</h3>
-                    <p style='font-size: 14px; color: #BBB; font-family: Arial, sans-serif;'><b>Jarak (Distance):</b> {distance:.4f}</p>
+                    <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif;'><b>Artis:</b> {result['artist']}</p>
+                    <p style='font-size: 14px; color: #BBB; font-family: Arial, sans-serif;'><b>Jarak (Distance):</b> {result['distance']:.4f}</p>
                     <p style='font-size: 16px; color: #DDD; font-family: Georgia, serif;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
         
                 # Gunakan expander untuk lirik lengkap
-                with st.expander(f"🎵 Klik untuk melihat lirik lengkap dari '{title}'"):
+                with st.expander(f"🎵 Klik untuk melihat lirik lengkap dari '{title}' oleh {result['artist']}"):
                     st.markdown(f"""
                     <div style='max-height: 200px; overflow-y: auto; padding: 10px; 
                     background: #333; border-radius: 8px;'>
                         <p style='color: #EEE; font-size: 14px; line-height: 1.6;'>{full_lyric}</p>
                     </div>
                     """, unsafe_allow_html=True)
+
     else:
         st.warning("Masukkan kata kunci untuk memulai pencarian!")
 
