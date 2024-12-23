@@ -8,7 +8,7 @@ import time
 
 # Load Dataset
 try:
-    dataset = pd.read_csv('/content/preprocessed_dataset.csv')
+    dataset = pd.read_csv('preprocessed_dataset.csv')
     if dataset.empty:
         st.error("Dataset kosong! Pastikan dataset tersedia.")
         st.stop()
