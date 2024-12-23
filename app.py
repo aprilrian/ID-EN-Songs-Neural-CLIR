@@ -93,6 +93,11 @@ if st.button("Cari"):
             end_time = time.time()
         
         st.write(f"⏱️ Pencarian selesai dalam {end_time - start_time:.4f} detik.")
+        st.write("""
+        ### Apa itu Proximitas?
+        **Proximitas** adalah ukuran jarak antara kata kunci pencarian Anda dan hasil yang ditemukan. 
+        Semakin kecil nilainya, semakin sesuai hasil pencarian dengan yang Anda cari.
+        """)
         
         if isinstance(results, str):
             st.error(results)
@@ -109,9 +114,9 @@ if st.button("Cari"):
                 border-radius: 10px; background: linear-gradient(135deg, #1E1E1E, #292929); 
                 box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);'>
                     <h3 style='margin-bottom: 10px; color: #76C7C0; font-family: "Arial Black", sans-serif;'>{i + 1}. {title}</h3>
+                    <p style='font-size: 14px; color: #FFD700; font-family: Arial, sans-serif; margin: 5px 0;'><b>Proximitas:</b> {result['distance']:.4f}</p>
                     <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Artis:</b> {result['artist']}</p>
                     <p style='font-size: 14px; color: #AAA; font-family: Arial, sans-serif; margin: 2px 0;'><b>Bahasa:</b> {"Indonesia" if result['artist'] == "id" else "Inggris"}</p>
-                    <p style='font-size: 14px; color: #FFD700; font-family: Arial, sans-serif; margin: 5px 0;'><b>Kesesuaian:</b> {result['distance']:.4f}</p>
                     <p style='font-size: 16px; color: #DDD; font-family: Georgia, serif; margin-top: 10px;'>{short_lyric}</p>
                 </div>
                 """, unsafe_allow_html=True)
