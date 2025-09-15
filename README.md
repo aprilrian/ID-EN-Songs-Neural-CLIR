@@ -70,7 +70,7 @@ POST /search
   title   = {ID-EN-Songs-Neural-CLIR},
   author  = {Rian Aprilyanto Siburian},
   year    = {2024},
-  url     = {https://github.com/<your-username>/ID-EN-Songs-Neural-CLIR}
+  url     = {https://github.com/aprilrian/ID-EN-Songs-Neural-CLIR}
 }
 ```
 
