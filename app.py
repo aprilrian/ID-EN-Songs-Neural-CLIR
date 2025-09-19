@@ -75,7 +75,7 @@ st.markdown("""
     <h1 style='color: #FFFFFF; font-family: "Trebuchet MS", sans-serif; 
     background: linear-gradient(90deg, rgba(118,199,192,1) 0%, rgba(30,144,255,1) 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;'>🎵 Indonesia-English Song Lyrics CLIR 🎵</h1>
+    -webkit-text-fill-color: transparent;'>🎵 Indonesia-English Song Searcher 🎵</h1>
     <p style='color: #AAA; font-size: 16px;'>Cari lagu favorit Anda berdasarkan cuplikan lirik atau kata kunci!</p>
 </div>
 """, unsafe_allow_html=True)
