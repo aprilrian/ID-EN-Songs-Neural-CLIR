@@ -136,7 +136,7 @@ if st.button("Cari"):
 st.markdown("<hr style='border: 1px solid #555; margin-top: 30px;'>", unsafe_allow_html=True)
 st.markdown("""
 <div style='text-align: center; margin-top: 50px;'>
-    <p style='color: #555; font-size: 14px;'>Built with ❤️ by <b>TBI MANIACS</b>.</p>
+    <p style='color: #555; font-size: 14px;'>Built with ❤️ by <b>SEPHIRA DIGITAL</b>.</p>
     <a href="https://github.com/aprilrian/ID-EN-Songs-Neural-CLIR" style='color: #76C7C0; text-decoration: none;'>GitHub Repo</a>
 </div>
 """, unsafe_allow_html=True)
